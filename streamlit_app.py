@@ -19,9 +19,10 @@ from snowflake.snowpark.functions import col
 cnx = st.connection("snowflake")
 session = cnx.session()
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
 # comment out this line to not display the DF 
-#st.dataframe(data=my_dataframe, use_container_width=True)
+st.dataframe(data=my_dataframe, use_container_width=True)
+st.stop()
 
 #Add a multiselect
 ingredients_list = st.multiselect(
