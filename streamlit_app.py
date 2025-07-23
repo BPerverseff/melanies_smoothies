@@ -39,17 +39,14 @@ ingredients_list = st.multiselect(
 #Replace with this as it is cleaner
 if ingredients_list:
 
-    #comment out these lines as they are no longer required
-    #st.write(ingredients_list)
-    #st.text(ingredients_list)
-
     #create an empty string variable
     ingredients_string = ''
 
     #Convert the list into the new string variable
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
-        smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        st.subheader(fruit_chosen + ' Nutritional Information')
+        smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_chosen)
 
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
